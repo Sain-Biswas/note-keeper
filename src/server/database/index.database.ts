@@ -8,5 +8,5 @@ const client = neon(envServer.DATABASE_URL);
 
 export const database = drizzle({
   client,
-  schema,
+  schema
 });

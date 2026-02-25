@@ -6,23 +6,23 @@ import { database } from "../database/index.database";
 
 export const auth = betterAuth({
   database: drizzleAdapter(database, {
-    provider: "pg",
+    provider: "pg"
   }),
 
   emailAndPassword: {
-    enabled: true,
+    enabled: true
   },
 
   socialProviders: {
     github: {
       clientId: envServer.GITHUB_CLIENT_ID,
-      clientSecret: envServer.GITHUB_CLIENT_SECRET,
+      clientSecret: envServer.GITHUB_CLIENT_SECRET
     },
     google: {
       clientId: envServer.GOOGLE_CLIENT_ID,
-      clientSecret: envServer.GOOGLE_CLIENT_SECRET,
-    },
+      clientSecret: envServer.GOOGLE_CLIENT_SECRET
+    }
   },
 
-  plugins: [nextCookies()],
+  plugins: [nextCookies()]
 });
