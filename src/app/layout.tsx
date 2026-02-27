@@ -6,6 +6,7 @@ import { cn } from "~/lib/utils";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import "~/app/globals.css";
+import { ThemeProvider } from "~/integrations/themes/provider";
 import { TooltipProvider } from "~/shadcn/ui/tooltip";
 
 const geistSans = Geist({
@@ -29,9 +30,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      suppressHydrationWarning
+    >
       <body className={cn(geistSans.variable, geistMono.variable)}>
-        <TooltipProvider>{children}</TooltipProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TooltipProvider>{children}</TooltipProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
